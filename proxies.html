@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clever | Log in</title>
+    
+    <link rel="icon" type="image/png" href="https://thegamewebsite.github.io/logo.png?v=13">
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background: #000;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .master-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+        }
+
+        /* Navigation Bar */
+        .header-nav {
+            width: 100%;
+            max-width: 900px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .back-home-link {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 12px;
+            text-transform: uppercase;
+            padding: 10px 20px;
+            border: 2px solid #ffffff;
+            border-radius: 50px;
+            transition: 0.3s;
+            opacity: 0.8;
+            background: transparent;
+        }
+
+        .back-home-link:hover {
+            opacity: 1;
+            background: #ffffff;
+            color: #000;
+        }
+
+        .header-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 50px;
+            width: 100%;
+        }
+
+        .main-header {
+            font-size: 54px;
+            font-weight: 900;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            text-align: center;
+            background: linear-gradient(#fff, #555);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
+            margin: 0;
+        }
+
+        /* Status Light */
+        .status-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .status-light {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #555; 
+            box-shadow: 0 0 5px rgba(255,255,255,0.2);
+            transition: 0.3s;
+        }
+
+        .status-online { background-color: #00ff00 !important; box-shadow: 0 0 12px #00ff00; }
+        .status-idle { background-color: #ffaa00 !important; box-shadow: 0 0 12px #ffaa00; }
+        .status-offline { background-color: #ff0000 !important; box-shadow: 0 0 12px #ff0000; }
+        .status-text { font-size: 10px; color: #888; letter-spacing: 2px; text-transform: uppercase; }
+
+        /* Proxy Boxes */
+        .scramjet-box {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid #fff;
+            padding: 30px 60px;
+            border-radius: 20px;
+            text-align: center;
+            transition: 0.4s;
+            cursor: pointer;
+        }
+
+        .scramjet-box:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.05);
+        }
+
+        .scramjet-title { font-size: 42px; font-weight: 900; margin: 0; text-transform: uppercase; }
+
+        .dashboard-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 280px;
+            text-align: center;
+            padding: 25px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid #333;
+        }
+
+        .btn { padding: 12px; font-weight: bold; border-radius: 8px; cursor: pointer; transition: 0.3s; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.2); background: #222; color: #fff; }
+        .btn:hover { background: #444; border-color: #fff; }
+
+    </style>
+</head>
+<body>
+
+    <div class="master-wrapper">
+        <div class="header-nav">
+            <a href="https://realhome-74e.pages.dev" class="back-home-link">← Home</a>
+        </div>
+
+        <div class="header-container">
+            <h1 class="main-header">PROXY LINKS</h1>
+            
+            <div class="scramjet-box" onclick="launch('Scramjet', 'https://doxy-frontend.onrender.com/')">
+                <h2 class="scramjet-title">SCRAMJET</h2>
+                <div class="status-container">
+                    <div id="scramjet-light" class="status-light"></div>
+                    <span id="scramjet-status-text" class="status-text">Detecting Server...</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="column">
+                <h2>Rammerhead</h2>
+                <button class="btn" onclick="launch('Rammerhead 1', 'https://shorturl.at/xYJ2i')">Method 1</button>
+                <button class="btn" onclick="launch('Rammerhead 2', 'https://shorturl.at/sGcBw')">Method 2</button>
+            </div>
+
+            <div class="column">
+                <h2 style="color: #999;">Utopia</h2>
+                <button class="btn" onclick="launch('Utopia 1', 'https://vocab.clever.jaytex.org/')">Method 1</button>
+                <button class="btn" onclick="launch('Utopia 2', 'https://food.fit-tw.com/')">Method 2</button>
+            </div>
+
+            <div class="column">
+                <h2 style="color: #ffb347;">Doge</h2>
+                <button class="btn" onclick="launch('Doge 1', 'https://educationate.space.cdn.cloudflare.net/')">Method 1</button>
+                <button class="btn" onclick="launch('Doge 1', 'https://educationate.storage.googleapis.com/index.html#/')">Method 2</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Status checker for Scramjet
+        const RENDER_URL = 'https://superdupereducational.onrender.com/';
+        async function checkStatus() {
+            const light = document.getElementById('scramjet-light');
+            const text = document.getElementById('scramjet-status-text');
+            try {
+                await fetch(RENDER_URL, { mode: 'no-cors' });
+                light.className = 'status-light status-online';
+                text.innerText = 'Online - Ready';
+            } catch (e) {
+                light.className = 'status-light status-offline';
+                text.innerText = 'Offline';
+            }
+        }
+        checkStatus();
+
+        // LAUNCH FUNCTION: Opens in SAME TAB
+        function launch(name, url) {
+            const content = `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>${name} | Clever</title>
+                    <style>
+                        body, html { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; background: #000; font-family: sans-serif; }
+                        iframe { border: none; width: 100%; height: 100%; }
+                        .back-btn {
+                            position: fixed; top: 15px; left: 15px;
+                            padding: 8px 16px; background: rgba(0, 0, 0, 0.6);
+                            color: white; border: 1px solid rgba(255, 255, 255, 0.3);
+                            border-radius: 20px; cursor: pointer; z-index: 99999;
+                            font-weight: bold; text-decoration: none; backdrop-filter: blur(5px);
+                            font-size: 13px; transition: 0.2s;
+                        }
+                        .back-btn:hover { background: #fff; color: #000; }
+                    </style>
+                </head>
+                <body>
+                    <a href="https://proxies-6x8.pages.dev" class="back-btn">←</a>
+                    <iframe src="${url}"></iframe>
+                    <script>
+                        window.addEventListener('keydown', function(e) {
+                            if (e.key.toLowerCase() === 'q') window.location.replace('https://classroom.google.com');
+                        });
+                    <\/script>
+                </body>
+                </html>`;
+            
+            document.open();
+            document.write(content);
+            document.close();
+        }
+
+        // Panic Key for the main menu too
+        window.addEventListener('keydown', function(e) {
+            if (e.key.toLowerCase() === 'q') window.location.href = 'https://classroom.google.com';
+        });
+    </script>
+</body>
+</html>
