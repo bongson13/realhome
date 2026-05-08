@@ -95,14 +95,31 @@
     }
     .tools-btn .icon{color:#A5D6A7;}
 
-    .news-btn{
-      grid-column:2;grid-row:3;
-      border-top:2px solid rgba(255,255,255,0.15);
-      background:rgba(10,10,15,0.7);
-      backdrop-filter:blur(20px);
-      cursor:default;display:flex;flex-direction:column;overflow:hidden;
-      padding:20px 22px;
+        /* Update this specific class in your <style> */
+    .news-btn {
+    grid-column: 2;
+    grid-row: 3;
+    border-top: 2px solid rgba(255,255,255,0.15);
+    background: rgba(10,10,15,0.7);
+    backdrop-filter: blur(20px);
+    /* Changed from button defaults */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 20px 22px;
+    border-radius: 24px;
+    border: 1px solid var(--border);
+    text-align: left;
     }
+
+    .news-scroll-area {
+    overflow-y: auto;
+    flex: 1; /* This forces it to fill the box and scroll */
+    width: 100%;
+    padding-right: 8px;
+    margin-top: 5px;
+    }
+
 
     .btn-icon{
       font-size:2.8vw;margin-bottom:8px;
@@ -186,13 +203,14 @@
       <span class="label">Movies &amp; Tools</span>
     </button>
 
-    <div class="nav-btn news-btn">
-      <div class="news-header">
+    <!-- Changed from <button> to <div> -->
+    <div class="news-btn">
+    <div class="news-header">
         <span>News</span>
         <a href="https://forms.gle/1PK3AMXTvXjHnrdq8" target="_blank" rel="noopener" class="news-pill pill-red">Request Form</a>
         <a href="javascript:void(0)" onclick="launch('Credits - Google Docs','https://realhome-9d8.pages.dev/credits','https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_document_x16.png',true)" class="news-pill pill-purple">Credits</a>
-      </div>
-      <div class="news-scroll-area">
+    </div>
+    <div class="news-scroll-area">
         <div class="news-entry"><span class="news-date">5/8/26</span><span class="news-text">Got rid of all the stuff that didn't work and I think I modified links to be right.</span></div>
         <div class="news-entry"><span class="news-date">5/8/26</span><span class="news-text">Guess what nerds. I got my own branch. This is not the real billybong but I hope to make it better. There will probably be around 4 other branches so get ready.</span></div>
         <div class="news-entry"><span class="news-date">3/27/26</span><span class="news-text">BIG NEWS: Looking for helpers — apply on the Request Form or in person. Help with code, get edit access and your name in credits.</span></div>
@@ -204,6 +222,7 @@
         <div class="news-entry"><span class="news-date">1/21/26</span><span class="news-text">Improved cloaking functionality.</span></div>
       </div>
     </div>
+
 
   </div>
 
