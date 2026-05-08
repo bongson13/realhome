@@ -1,499 +1,219 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>testing</title>
-
-    
-
-    <link rel="icon" type="image/png" href="https://schoolissuperfun.github.io/logo.png">
-
-
-
-    <style>
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body, html { height: 100%; width: 100%; background: #000; font-family: 'Inter', sans-serif; overflow: hidden; }
-
-
-
-        /* --- PANIC BANNER --- */
-
-        .panic-banner {
-
-            position: fixed;
-
-            top: 0;
-
-            left: 0;
-
-            width: 100%;
-
-            background: rgba(255, 255, 255, 0.1);
-
-            backdrop-filter: blur(5px);
-
-            color: rgba(255, 255, 255, 0.6);
-
-            text-align: center;
-
-            padding: 5px 0;
-
-            font-size: 0.9vw;
-
-            font-weight: 600;
-
-            z-index: 9999;
-
-            letter-spacing: 1px;
-
-            text-transform: uppercase;
-
-            pointer-events: none;
-
-        }
-
-
-
-        .container {
-
-            display: grid;
-
-            grid-template-columns: 1fr 1fr;
-
-            grid-template-rows: 1fr 1fr 2fr; 
-
-            height: 100vh;
-
-            width: 100vw;
-
-            gap: 15px; 
-
-            padding: 40px 15px 15px 15px;
-
-        }
-
-
-
-        .nav-btn {
-
-            position: relative;
-
-            display: flex;
-
-            flex-direction: column;
-
-            align-items: center;
-
-            justify-content: center;
-
-            text-align: center;
-
-            font-weight: 900;
-
-            text-transform: uppercase;
-
-            color: white;
-
-            border: none;
-
-            cursor: pointer;
-
-            transition: transform 0.3s ease, filter 0.3s ease;
-
-            text-decoration: none;
-
-            outline: none;
-
-            overflow: hidden;
-
-            font-size: 2.5vw; 
-
-        }
-
-
-
-        .games-main-btn {
-
-            grid-column: 1;
-
-            grid-row: 1;
-
-            background: linear-gradient(135deg, #007cf0, #00dfd8);
-
-            border-radius: 40px 15px 10px 15px;
-
-        }
-
-
-
-        .games-req-btn {
-
-            grid-column: 1;
-
-            grid-row: 2;
-
-            background: linear-gradient(225deg, #4facfe, #00f2fe);
-
-            border-radius: 10px 15px 40px 15px;
-
-        }
-
-
-
-        .proxies-btn {
-
-            grid-column: 2;
-
-            grid-row: 1 / span 2;
-
-            background: linear-gradient(225deg, #ff4b2b, #ff416c);
-
-            border-radius: 15px 40px 15px 40px;
-
-            font-size: 3.5vw;
-
-        }
-
-
-
-        .tools-btn {
-
-            grid-column: 1;
-
-            grid-row: 3;
-
-            background: linear-gradient(135deg, #7928ca, #ff0080);
-
-            border-radius: 40px 15px 40px 15px;
-
-        }
-
-
-
-        .news-btn {
-
-            grid-column: 2;
-
-            grid-row: 3;
-
-            background: #111; 
-
-            border: 2px solid #333;
-
-            border-radius: 15px 40px 15px 40px;
-
-            padding: 20px;
-
-            cursor: default;
-
-            display: flex;
-
-            flex-direction: column;
-
-            overflow: hidden;
-
-        }
-
-
-
-        .news-header {
-
-            color: #4facfe;
-
-            font-size: 1.3vw;
-
-            margin-bottom: 8px;
-
-            font-weight: 900;
-
-            letter-spacing: 1px;
-
-            flex-shrink: 0;
-
-            background: #111;
-
-            text-align: left;
-
-            width: 100%;
-
-        }
-
-
-
-        .news-header a {
-
-            color: #ff416c;
-
-            text-decoration: underline;
-
-            cursor: pointer;
-
-        }
-
-
-
-        .news-scroll-area {
-
-            overflow-y: auto;
-
-            flex-grow: 1;
-
-            width: 100%;
-
-        }
-
-
-
-        .news-text {
-
-            text-transform: none; 
-
-            font-weight: 400;
-
-            font-size: 1.2vw;
-
-            color: #ccc;
-
-            line-height: 1.1; 
-
-            white-space: normal;
-
-            text-align: left;
-
-        }
-
-
-
-        .news-scroll-area::-webkit-scrollbar { width: 6px; }
-
-        .news-scroll-area::-webkit-scrollbar-track { background: transparent; }
-
-        .news-scroll-area::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
-
-        .news-scroll-area::-webkit-scrollbar-thumb:hover { background: #4facfe; }
-
-
-
-        .nav-btn:not(.news-btn):hover {
-
-            filter: brightness(1.2);
-
-            transform: scale(1.01);
-
-            z-index: 10;
-
-        }
-
-
-
-        span { filter: drop-shadow(0 0 10px rgba(0,0,0,0.5)); pointer-events: none; padding: 10px; }
-
-
-
-        .sub-text {
-
-            font-size: 1.1vw;
-
-            font-weight: 600;
-
-            text-transform: none;
-
-            display: block;
-
-            margin-top: 5px;
-
-            opacity: 0.8;
-
-        }
-
-    </style>
-
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>testing</title>
+  <link rel="icon" type="image/png" href="https://schoolissuperfun.github.io/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    :root{
+      --c1:#7B5EA7;--c2:#4FC3F7;--c3:#FF5370;--c4:#B388FF;
+      --glass:rgba(255,255,255,0.06);--border:rgba(255,255,255,0.1);
+    }
+    body,html{height:100%;width:100%;background:#0a0a0f;font-family:'Inter',sans-serif;overflow:hidden;color:#fff;}
+
+    /* animated background */
+    body::before{
+      content:'';position:fixed;inset:0;
+      background:
+        radial-gradient(ellipse 60% 50% at 20% 20%, rgba(123,94,167,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 80% 80%, rgba(79,195,247,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 50% at 60% 10%, rgba(255,83,112,0.1) 0%, transparent 50%);
+      pointer-events:none;z-index:0;
+    }
+
+    .panic-banner{
+      position:fixed;top:0;left:0;width:100%;
+      background:rgba(255,255,255,0.04);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--border);
+      color:rgba(255,255,255,0.35);
+      text-align:center;padding:6px 0;
+      font-size:10px;font-weight:600;z-index:9999;
+      letter-spacing:2px;text-transform:uppercase;pointer-events:none;
+    }
+
+    .container{
+      position:relative;z-index:1;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      grid-template-rows:1fr 1fr 2fr;
+      height:100vh;width:100vw;
+      gap:12px;padding:44px 12px 12px 12px;
+    }
+
+    .nav-btn{
+      position:relative;display:flex;flex-direction:column;
+      align-items:center;justify-content:center;text-align:center;
+      font-weight:900;text-transform:uppercase;color:white;
+      border:none;cursor:pointer;
+      transition:transform 0.25s cubic-bezier(.34,1.56,.64,1), filter 0.2s;
+      text-decoration:none;outline:none;overflow:hidden;
+      font-size:2.2vw;border-radius:24px;
+      background:var(--glass);
+      border:1px solid var(--border);
+      backdrop-filter:blur(16px);
+    }
+
+    .nav-btn::before{
+      content:'';position:absolute;inset:0;opacity:0;
+      transition:opacity 0.3s;background:rgba(255,255,255,0.05);
+      border-radius:inherit;
+    }
+    .nav-btn:hover::before{opacity:1;}
+    .nav-btn:not(.news-btn):hover{transform:scale(1.025);filter:brightness(1.15);}
+
+    /* colored glow + top border accent per tile */
+    .games-main-btn{
+      grid-column:1;grid-row:1;
+      border-top:2px solid #4FC3F7;
+      box-shadow:0 0 40px rgba(79,195,247,0.12), inset 0 1px 0 rgba(79,195,247,0.2);
+    }
+    .games-main-btn .icon{color:#4FC3F7;}
+
+    .games-req-btn{
+      grid-column:1;grid-row:2;
+      border-top:2px solid #7B5EA7;
+      box-shadow:0 0 40px rgba(123,94,167,0.12), inset 0 1px 0 rgba(123,94,167,0.2);
+    }
+    .games-req-btn .icon{color:#B388FF;}
+
+    .proxies-btn{
+      grid-column:2;grid-row:1/span 2;font-size:3.2vw;
+      border-top:2px solid #FF5370;
+      box-shadow:0 0 60px rgba(255,83,112,0.14), inset 0 1px 0 rgba(255,83,112,0.2);
+    }
+    .proxies-btn .icon{color:#FF5370;font-size:4vw;}
+
+    .tools-btn{
+      grid-column:1;grid-row:3;
+      border-top:2px solid #A5D6A7;
+      box-shadow:0 0 40px rgba(165,214,167,0.1), inset 0 1px 0 rgba(165,214,167,0.15);
+    }
+    .tools-btn .icon{color:#A5D6A7;}
+
+    .news-btn{
+      grid-column:2;grid-row:3;
+      border-top:2px solid rgba(255,255,255,0.15);
+      background:rgba(10,10,15,0.7);
+      backdrop-filter:blur(20px);
+      cursor:default;display:flex;flex-direction:column;overflow:hidden;
+      padding:20px 22px;
+    }
+
+    .btn-icon{
+      font-size:2.8vw;margin-bottom:8px;
+      display:block;
+    }
+    .proxies-btn .btn-icon{font-size:4vw;}
+
+    .label{
+      font-size:1.8vw;font-weight:900;letter-spacing:1px;
+      line-height:1.2;
+    }
+    .proxies-btn .label{font-size:3vw;}
+
+    .sub-text{
+      font-size:0.95vw;font-weight:500;text-transform:none;
+      display:block;margin-top:6px;opacity:0.55;letter-spacing:0;
+    }
+
+    /* NEWS */
+    .news-header{
+      color:rgba(255,255,255,0.9);font-size:10px;font-weight:700;
+      letter-spacing:2px;text-transform:uppercase;
+      margin-bottom:12px;flex-shrink:0;
+      display:flex;gap:10px;align-items:center;flex-wrap:wrap;
+    }
+    .news-pill{
+      padding:3px 10px;border-radius:20px;font-size:9px;
+      font-weight:700;letter-spacing:1px;cursor:pointer;
+      text-decoration:none;border:1px solid;transition:0.2s;
+    }
+    .pill-red{color:#FF5370;border-color:rgba(255,83,112,0.4);background:rgba(255,83,112,0.1);}
+    .pill-red:hover{background:rgba(255,83,112,0.25);}
+    .pill-purple{color:#B388FF;border-color:rgba(179,136,255,0.4);background:rgba(179,136,255,0.1);}
+    .pill-purple:hover{background:rgba(179,136,255,0.25);}
+
+    .news-scroll-area{overflow-y:auto;flex-grow:1;width:100%;padding-right:4px;}
+    .news-scroll-area::-webkit-scrollbar{width:4px;}
+    .news-scroll-area::-webkit-scrollbar-track{background:transparent;}
+    .news-scroll-area::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.12);border-radius:4px;}
+    .news-scroll-area::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,0.25);}
+
+    .news-entry{
+      padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06);
+      display:flex;gap:10px;align-items:flex-start;
+    }
+    .news-entry:last-child{border-bottom:none;}
+    .news-date{
+      font-size:9px;font-weight:700;letter-spacing:1px;
+      color:rgba(255,255,255,0.3);white-space:nowrap;padding-top:2px;min-width:48px;
+    }
+    .news-text{
+      font-size:11px;color:rgba(255,255,255,0.65);line-height:1.5;font-weight:400;
+      text-transform:none;text-align:left;
+    }
+
+    span{pointer-events:none;}
+  </style>
 </head>
-
 <body>
+  <div class="panic-banner">Updates weekly · Request games using the form · Press Q to exit</div>
 
+  <div class="container">
 
+    <button class="nav-btn games-main-btn" onclick="launch('Grades and Attendance','https://games-4cz.pages.dev','https://realhome-9d8.pages.dev/powerschool.png',false)">
+      <span class="btn-icon">🎮</span>
+      <span class="label">Main Games</span>
+    </button>
 
-    <div class="panic-banner">Updates weekly. Use the form for requests so I don't forget!</div>
+    <button class="nav-btn games-req-btn" onclick="launch('Home - Classroom','https://requested-games-4jg.pages.dev','newhometesting.pages.dev/classroom.png',false)">
+      <span class="btn-icon">⭐</span>
+      <span class="label">Requested Games<span class="sub-text">Games In News · Game Websites</span></span>
+    </button>
 
+    <button class="nav-btn proxies-btn" onclick="launch('Home - Lewis Middle','https://realhome-9d8.pages.dev/proxies','newhometesting.pages.dev/lewis.png',false)">
+      <span class="btn-icon">🔗</span>
+      <span class="label">Proxies</span>
+    </button>
 
+    <button class="nav-btn tools-btn" onclick="launch('Home - Google Drive','https://realhome-9d8.pages.dev/moviesandtools','newhometesting.pages.dev/googledrive.png',false)">
+      <span class="btn-icon">🎬</span>
+      <span class="label">Movies &amp; Tools</span>
+    </button>
 
-    <div class="container">
-
-        <button class="nav-btn games-main-btn" onclick="launch('Grades and Attendance', 'https://games-4cz.pages.dev', 'https://realhome-9d8.pages.dev/powerschool.png', false)">
-
-            <span>Main Games</span>
-
-        </button>
-
-
-
-        <button class="nav-btn games-req-btn" onclick="launch('Home - Classroom', 'https://requested-games-4jg.pages.dev', 'newhometesting.pages.dev/classroom.png', false)">
-
-            <span>Requested Games<br><span class="sub-text">Games In News, Game Websites</span></span>
-
-        </button>
-
-
-
-        <button class="nav-btn proxies-btn" onclick="launch('Home - Lewis Middle', 'https://realhome-9d8.pages.dev/proxies', 'newhometesting.pages.dev/lewis.png', false)">
-
-            <span>Proxies</span>
-
-        </button>
-
-
-
-        <button class="nav-btn tools-btn" onclick="launch('Home - Google Drive', 'https://realhome-9d8.pages.dev/moviesandtools', 'newhometesting.pages.dev/googledrive.png', false)">
-
-            <span>Movies and Tools</span>
-
-        </button>
-
-
-
-        <div class="nav-btn news-btn">
-
-            <div class="news-header">
-
-                NEWS (<a href="https://forms.gle/1PK3AMXTvXjHnrdq8" target="_blank" rel="noopener noreferrer">REQUEST FORM</a>) | 
-
-                <a href="javascript:void(0)" onclick="launch('Credits - Google Docs', 'https://realhome-9d8.pages.dev/credits', 'https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_document_x16.png', true)" style="color: #7928ca; text-decoration: underline;">CREDITS</a>
-
-            </div>
-
-            
-
-            <div class="news-scroll-area">
-
-                <div class="news-text">
-
-                    5/8/26: Got rid of all the stuff that didn't work and I think I modified links to be right.
-                    
-                    5/8/26: Guess what nerds. I got my own branch. This is not the real billybong but I hope to make it better. There will probably be around 4 other branches so get ready.
-                    
-                    3/27/26: BIG NEWS: I am looking for helpers, you can apply on the Request Form or in person if you know me. There will be a period where you will help me with code and adding features, and then once you do enough for the website I will give you edit access and you willl get to choose your name in the credits section<br><br>
-
-                    3/27/26: Sorry for not updating the news for a bit I added 3 ubg sites and overcloaked as well as quiz-55 which are all very good game website(they might get blcoked though) I also added Anitmatter Dimensions, for the dude who asked, I also finally fixed Scramjet and I am working on making it faster<br><br>
-
-                    3/16/26: Everything except main games is now contained inside one tab, teachers can't see what you're doing, it does not show up in history, it looks like a glitch in admin logs due to looking like clever, I also added Five NIghts at epsteins which is a great game it didnt work for a long time but now it does. <br><br>
-
-                    2/27/26: I added a bunch of stuff!: I added Bloxd.io, and 2 new unblocked games sites<br><br>
-
-                    2/18/26: MORE ABOUT THE SCRAMJET: Deployed to render 24/7.<br><br>
-
-                    2/10/26: Added Five Nights at Epsteins and Omori.<br><br>
-
-                    1/21/26: Added better cloaking functionality.
-
-                </div>
-
-            </div>
-
-        </div>
-
+    <div class="nav-btn news-btn">
+      <div class="news-header">
+        <span>News</span>
+        <a href="https://forms.gle/1PK3AMXTvXjHnrdq8" target="_blank" rel="noopener" class="news-pill pill-red">Request Form</a>
+        <a href="javascript:void(0)" onclick="launch('Credits - Google Docs','https://realhome-9d8.pages.dev/credits','https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_document_x16.png',true)" class="news-pill pill-purple">Credits</a>
+      </div>
+      <div class="news-scroll-area">
+        <div class="news-entry"><span class="news-date">5/8/26</span><span class="news-text">Got rid of all the stuff that didn't work and I think I modified links to be right.</span></div>
+        <div class="news-entry"><span class="news-date">5/8/26</span><span class="news-text">Guess what nerds. I got my own branch. This is not the real billybong but I hope to make it better. There will probably be around 4 other branches so get ready.</span></div>
+        <div class="news-entry"><span class="news-date">3/27/26</span><span class="news-text">BIG NEWS: Looking for helpers — apply on the Request Form or in person. Help with code, get edit access and your name in credits.</span></div>
+        <div class="news-entry"><span class="news-date">3/27/26</span><span class="news-text">Added 3 UBG sites, Overcloaked, quiz-55, and Antimatter Dimensions. Fixed Scramjet and working on speed improvements.</span></div>
+        <div class="news-entry"><span class="news-date">3/16/26</span><span class="news-text">Everything (except main games) is now in one tab — no history, no admin logs, looks like Clever. Added Five Nights at Epsteins.</span></div>
+        <div class="news-entry"><span class="news-date">2/27/26</span><span class="news-text">Added Bloxd.io and 2 new unblocked games sites.</span></div>
+        <div class="news-entry"><span class="news-date">2/18/26</span><span class="news-text">Scramjet deployed to Render 24/7.</span></div>
+        <div class="news-entry"><span class="news-date">2/10/26</span><span class="news-text">Added Five Nights at Epsteins and Omori.</span></div>
+        <div class="news-entry"><span class="news-date">1/21/26</span><span class="news-text">Improved cloaking functionality.</span></div>
+      </div>
     </div>
 
+  </div>
 
-
-    <script>
-
-        function launch(disguiseTitle, url, favicon, inNewTab) {
-
-            const content = `
-
-                <!DOCTYPE html>
-
-                <html>
-
-                <head>
-
-                    <title>${disguiseTitle}</title>
-
-                    <link rel="icon" type="image/png" href="${favicon}">
-
-                    <style>
-
-                        body, html { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; background: #000; }
-
-                        iframe { border: none; width: 100%; height: 100%; }
-
-                    </style>
-
-                </head>
-
-                <body>
-
-                    <iframe src="${url}"></iframe>
-
-                    <script>
-
-                        window.addEventListener('keydown', function(e) {
-
-                            if (e.key.toLowerCase() === 'q') {
-
-                                window.location.replace('https://classroom.google.com');
-
-                            }
-
-                        });
-
-                    <\/script>
-
-                </body>a
-
-                </html>`;
-
-
-
-            if (inNewTab) {
-
-                const newWin = window.open('about:blank', '_blank');
-
-                if (newWin) {
-
-                    newWin.document.open();
-
-                    newWin.document.write(content);
-
-                    newWin.document.close();
-
-                }
-
-            } else {
-
-                document.open();
-
-                document.write(content);
-
-                document.close();
-
-            }
-
-        }
-
-
-
-        window.addEventListener('keydown', function(e) {
-
-            if (e.key.toLowerCase() === 'q') {
-
-                window.location.href = 'https://classroom.google.com';
-
-            }
-
-        });
-
-    </script>
-
+  <script>
+    function launch(disguiseTitle,url,favicon,inNewTab){
+      const content=`<!DOCTYPE html><html><head><title>${disguiseTitle}</title><link rel="icon" type="image/png" href="${favicon}"><style>body,html{margin:0;padding:0;height:100%;width:100%;overflow:hidden;background:#000;}iframe{border:none;width:100%;height:100%;}<\/style><\/head><body><iframe src="${url}"><\/iframe><script>window.addEventListener('keydown',function(e){if(e.key.toLowerCase()==='q'){window.location.replace('https://classroom.google.com');}});<\/script><\/body><\/html>`;
+      if(inNewTab){const w=window.open('about:blank','_blank');if(w){w.document.open();w.document.write(content);w.document.close();}}
+      else{document.open();document.write(content);document.close();}
+    }
+    window.addEventListener('keydown',function(e){if(e.key.toLowerCase()==='q')window.location.href='https://classroom.google.com';});
+  </script>
 </body>
-
 </html>

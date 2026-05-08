@@ -1,173 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tools & Movies Hub</title>
-    <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            font-family: 'Inter', sans-serif;
-            background: #000;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Tools & Movies Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body,html{min-height:100%;background:#0a0a0f;font-family:'Inter',sans-serif;color:#fff;}
+    body::before{
+      content:'';position:fixed;inset:0;
+      background:
+        radial-gradient(ellipse 50% 50% at 5% 5%,rgba(79,195,247,0.1) 0%,transparent 55%),
+        radial-gradient(ellipse 50% 50% at 95% 95%,rgba(255,83,112,0.1) 0%,transparent 55%);
+      pointer-events:none;z-index:0;
+    }
 
-        body { background: radial-gradient(circle at top, #1a1a1a 0%, #000 100%); }
+    .page{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;padding:32px 20px 48px;}
 
-        /* --- Top Navigation --- */
-        .header-nav {
-            width: 90%;
-            max-width: 900px;
-            display: flex;
-            justify-content: flex-start;
-            padding-top: 30px;
-        }
+    .header-nav{width:90%;max-width:920px;display:flex;justify-content:flex-start;margin-bottom:32px;}
+    .back-home-link{
+      text-decoration:none;color:#fff;font-weight:700;font-size:11px;
+      text-transform:uppercase;letter-spacing:2px;padding:9px 20px;
+      border:1px solid rgba(255,255,255,0.2);border-radius:50px;
+      background:rgba(255,255,255,0.05);backdrop-filter:blur(10px);transition:0.2s;
+    }
+    .back-home-link:hover{background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.4);}
 
-        .back-home-link {
-            text-decoration: none;
-            color: #ffffff;
-            font-weight: 800;
-            font-size: 12px;
-            text-transform: uppercase;
-            padding: 8px 15px;
-            border: 1px solid #ffffff;
-            border-radius: 20px;
-            transition: 0.3s;
-            opacity: 0.6;
-        }
+    .main-header{
+      font-size:clamp(30px,5vw,56px);font-weight:900;letter-spacing:6px;
+      text-transform:uppercase;color:#fff;margin-bottom:40px;text-align:center;
+    }
 
-        .back-home-link:hover {
-            opacity: 1;
-            background: #ffffff;
-            color: #000;
-        }
+    .dashboard-grid{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;width:100%;max-width:760px;}
 
-        .wrapper {
-            width: 100%;
-            max-width: 900px;
-            padding: 20px;
-            text-align: center;
-        }
+    .column{
+      display:flex;flex-direction:column;gap:10px;width:340px;padding:28px;
+      border-radius:22px;backdrop-filter:blur(16px);
+    }
+    .col-label{
+      font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;
+    }
+    .col-title{font-size:20px;font-weight:900;letter-spacing:1px;margin-bottom:6px;}
+    .col-divider{height:1px;margin-bottom:2px;}
 
-        .main-header {
-            font-size: 48px;
-            font-weight: 900;
-            letter-spacing: 4px;
-            margin-bottom: 40px;
-            text-transform: uppercase;
-            background: linear-gradient(#fff, #666);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+    /* Tools */
+    .tools-col{
+      background:rgba(79,195,247,0.05);
+      border:1px solid rgba(79,195,247,0.15);
+      border-top:2px solid #4FC3F7;
+      box-shadow:0 0 50px rgba(79,195,247,0.08);
+    }
+    .tools-col .col-label{color:rgba(79,195,247,0.6);}
+    .tools-col .col-title{color:#4FC3F7;}
+    .tools-col .col-divider{background:rgba(79,195,247,0.15);}
+    .tools-btn{
+      background:rgba(79,195,247,0.08);color:#fff;border:1px solid rgba(79,195,247,0.2);
+      padding:13px;font-weight:700;font-size:11px;letter-spacing:1.5px;border-radius:11px;
+      cursor:pointer;text-transform:uppercase;transition:0.2s;
+    }
+    .tools-btn:hover{background:rgba(79,195,247,0.18);border-color:rgba(79,195,247,0.45);}
 
-        .dashboard-grid {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-
-        .column {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            width: 320px;
-            padding: 30px;
-            border-radius: 25px;
-            backdrop-filter: blur(10px);
-        }
-
-        /* Tools Blue Theme */
-        .tools-col { background: rgba(20, 30, 40, 0.5); border: 1px solid rgba(52, 152, 219, 0.3); }
-        .tools-btn { background: #2980b9; color: white; border: none; padding: 16px; font-weight: 900; border-radius: 12px; cursor: pointer; text-transform: uppercase; transition: 0.3s; text-decoration: none; display: block; }
-        .tools-btn:hover { background: #3498db; box-shadow: 0 0 20px rgba(52, 152, 219, 0.4); }
-
-        /* Movies Red Theme */
-        .movies-col { background: rgba(60, 10, 10, 0.4); border: 1px solid rgba(231, 76, 60, 0.3); }
-        .movie-btn { background: #c0392b; color: white; border: none; padding: 16px; font-weight: 900; border-radius: 12px; cursor: pointer; text-transform: uppercase; transition: 0.3s; text-decoration: none; display: block; }
-        .movie-btn:hover { background: #e74c3c; box-shadow: 0 0 20px rgba(231, 76, 60, 0.4); }
-    </style>
+    /* Movies */
+    .movies-col{
+      background:rgba(255,83,112,0.05);
+      border:1px solid rgba(255,83,112,0.15);
+      border-top:2px solid #FF5370;
+      box-shadow:0 0 50px rgba(255,83,112,0.08);
+    }
+    .movies-col .col-label{color:rgba(255,83,112,0.6);}
+    .movies-col .col-title{color:#FF5370;}
+    .movies-col .col-divider{background:rgba(255,83,112,0.15);}
+    .movie-btn{
+      background:rgba(255,83,112,0.08);color:#fff;border:1px solid rgba(255,83,112,0.2);
+      padding:13px;font-weight:700;font-size:11px;letter-spacing:1.5px;border-radius:11px;
+      cursor:pointer;text-transform:uppercase;transition:0.2s;
+    }
+    .movie-btn:hover{background:rgba(255,83,112,0.18);border-color:rgba(255,83,112,0.45);}
+  </style>
 </head>
 <body>
-
+  <div class="page">
     <div class="header-nav">
-        <a href="https://realhome-9d8.pages.dev/" class="back-home-link">← Home</a>
+      <a href="https://realhome-9d8.pages.dev/" class="back-home-link">← Home</a>
     </div>
 
-    <div class="wrapper">
-        <h1 class="main-header">Tools & Movies</h1>
-        <div class="dashboard-grid">
-            
-            <div class="column tools-col">
-                <h2 style="color: #3498db; margin-bottom: 15px;">Tools</h2>
-                <button class="tools-btn" onclick="launch('Twitter Viewer', 'https://nitter.net/')">Twitter Viewer</button>
-                <button class="tools-btn" onclick="launch('Invidious', 'https://inv.nadeko.net/')">Unblocked Youtube</button>
-                <button class="tools-btn" onclick="launch('GitHub Viewer', 'https://schoolissuperfun.github.io/GitHub-Repository-Search/')">GitHub Alt Viewer</button>
-                <button class="tools-btn" onclick="launch('YouTube Viewer', 'https://safeshare.tv/')">YouTube Viewer</button>
-            </div>
+    <h1 class="main-header">Tools &amp; Movies</h1>
 
-            <div class="column movies-col">
-                <h2 style="color: #e74c3c; margin-bottom: 15px;">Movies</h2>
-                <button class="movie-btn" onclick="launch('Bflixz', 'https://Bflixz.org')">Bflixz</button>
-                <button class="movie-btn" onclick="launch('Pluto TV', 'https://pluto.tv/')">Pluto TV</button>
-                <button class="movie-btn" onclick="launch('Plex', 'https://app.plex.tv/desktop/#!/')">Plex</button>
-                <button class="movie-btn" onclick="launch('Sling TV', 'https://watch.sling.com/dashboard/home')">Sling TV</button>
-                <button class="movie-btn" onclick="launch('Xumo Play', 'https://play.xumo.com/free-movies')">Xumo Play</button>
-                <button class="movie-btn" onclick="launch('Roku Channel', 'https://therokuchannel.roku.com/browse/free-movies-and-tv')">The Roku Channel</button>
-            </div>
+    <div class="dashboard-grid">
+      <div class="column tools-col">
+        <div class="col-label">Utilities</div>
+        <div class="col-title">Tools</div>
+        <div class="col-divider"></div>
+        <button class="tools-btn" onclick="launch('Twitter Viewer','https://nitter.net/')">Twitter Viewer</button>
+        <button class="tools-btn" onclick="launch('Invidious','https://inv.nadeko.net/')">Unblocked Youtube</button>
+        <button class="tools-btn" onclick="launch('GitHub Viewer','https://schoolissuperfun.github.io/GitHub-Repository-Search/')">GitHub Alt Viewer</button>
+        <button class="tools-btn" onclick="launch('YouTube Viewer','https://safeshare.tv/')">YouTube Viewer</button>
+      </div>
 
-        </div>
+      <div class="column movies-col">
+        <div class="col-label">Streaming</div>
+        <div class="col-title">Movies</div>
+        <div class="col-divider"></div>
+        <button class="movie-btn" onclick="launch('Bflixz','https://Bflixz.org')">Bflixz</button>
+        <button class="movie-btn" onclick="launch('Pluto TV','https://pluto.tv/')">Pluto TV</button>
+        <button class="movie-btn" onclick="launch('Plex','https://app.plex.tv/desktop/#!/')">Plex</button>
+        <button class="movie-btn" onclick="launch('Sling TV','https://watch.sling.com/dashboard/home')">Sling TV</button>
+        <button class="movie-btn" onclick="launch('Xumo Play','https://play.xumo.com/free-movies')">Xumo Play</button>
+        <button class="movie-btn" onclick="launch('Roku Channel','https://therokuchannel.roku.com/browse/free-movies-and-tv')">The Roku Channel</button>
+      </div>
     </div>
+  </div>
 
-    <script>
-        // Launch function: Overwrites current tab with the viewer and a Back button
-        function launch(name, url) {
-            const currentURL = window.location.href; // Captures current hub URL to return to
-            const content = `
-                <!DOCTYPE html>
-                <html>
-                <head>
-                    <title>${name}</title>
-                    <style>
-                        body, html { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; background: #000; font-family: sans-serif; }
-                        iframe { border: none; width: 100%; height: 100%; }
-                        .back-btn {
-                            position: fixed; top: 15px; left: 15px;
-                            padding: 8px 16px; background: rgba(0, 0, 0, 0.6);
-                            color: white; border: 1px solid rgba(255, 255, 255, 0.3);
-                            border-radius: 20px; cursor: pointer; z-index: 99999;
-                            font-weight: bold; text-decoration: none; backdrop-filter: blur(5px);
-                            font-size: 13px; transition: 0.2s;
-                        }
-                        .back-btn:hover { background: #fff; color: #000; }
-                    </style>
-                </head>
-                <body>
-                    <a href="${currentURL}" class="back-btn">← </a>
-                    <iframe src="${url}"></iframe>
-                    <script>
-                        // Panic Key: Press Q to go to Classroom
-                        window.addEventListener('keydown', function(e) {
-                            if (e.key.toLowerCase() === 'q') window.location.replace('https://classroom.google.com');
-                        });
-                    <\/script>
-                </body>
-                </html>`;
-            
-            document.open();
-            document.write(content);
-            document.close();
-        }
-
-        // Panic Key for the main menu page
-        window.addEventListener('keydown', function(e) {
-            if (e.key.toLowerCase() === 'q') window.location.href = 'https://classroom.google.com';
-        });
-    </script>
+  <script>
+    function launch(name,url){
+      const cur=window.location.href;
+      const content=`<!DOCTYPE html><html><head><title>${name}</title><style>body,html{margin:0;padding:0;height:100%;width:100%;overflow:hidden;background:#000;font-family:sans-serif;}iframe{border:none;width:100%;height:100%;}.back-btn{position:fixed;top:15px;left:15px;padding:8px 16px;background:rgba(0,0,0,0.6);color:white;border:1px solid rgba(255,255,255,0.3);border-radius:20px;cursor:pointer;z-index:99999;font-weight:bold;text-decoration:none;backdrop-filter:blur(5px);font-size:13px;transition:0.2s;}.back-btn:hover{background:#fff;color:#000;}<\/style><\/head><body><a href="${cur}" class="back-btn">←<\/a><iframe src="${url}"><\/iframe><script>window.addEventListener('keydown',function(e){if(e.key.toLowerCase()==='q')window.location.replace('https://classroom.google.com');});<\/script><\/body><\/html>`;
+      document.open();document.write(content);document.close();
+    }
+    window.addEventListener('keydown',function(e){if(e.key.toLowerCase()==='q')window.location.href='https://classroom.google.com';});
+  </script>
 </body>
 </html>
